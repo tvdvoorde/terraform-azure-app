@@ -16,7 +16,7 @@ resource "azurerm_service_plan" "plan" {
 
 resource "azurerm_linux_web_app" "app" {
   name                = var.linux_web_app_name
-  resource_group_name = azurerm_resource_group.plan.name
+  resource_group_name = data.azurerm_resource_group.plan.name
   location            = azurerm_service_plan.app.location
   service_plan_id     = azurerm_service_plan.app.id
   site_config {}
