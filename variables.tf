@@ -7,13 +7,13 @@ variable "resource_group_location" {
 }
 
 variable "service_plan_name" {
-  type = string
+  type        = string
   description = "Specifies the app service plan name - must start with \"plan-\"."
 
   validation {
     condition     = substr(var.service_plan_name, 0, 5) == "plan-"
     error_message = "The plan name must start with \"plan-\"."
-  }  
+  }
 }
 
 variable "linux_web_app_name" {
