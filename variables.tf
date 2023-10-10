@@ -11,7 +11,7 @@ variable "service_plan_name" {
   description = "Specifies the app service plan name - must start with \"plan-\"."
 
   validation {
-    condition     = substr(var.image_id, 0, 5) == "plan-"
+    condition     = substr(var.service_plan_name, 0, 5) == "plan-"
     error_message = "The plan name must start with \"plan-\"."
   }  
 }
