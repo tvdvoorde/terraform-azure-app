@@ -1,4 +1,4 @@
-output "default_host_name" {
-  description = "The default host name."
-  value       = azurerm_linux_web_app.default_host_name
+output "default_hostname" {
+  description = "The default hostname."
+  value       = azurerm_linux_web_app.app.default_hostname
 }
