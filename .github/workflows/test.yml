@@ -8,7 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
@@ -17,3 +16,9 @@ jobs:
       - name: terraform version
         run: |
           terraform version
+      - name: terraform init
+        run: |
+          terraform init
+      - name: terraform test
+        run: |
+          terraform test 
