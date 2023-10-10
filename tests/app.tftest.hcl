@@ -16,12 +16,10 @@ provider "azurerm" {
 }
 
 run "unit_tests" {
-    provider = azurerm
   command = plan
 }
 
 run "input_validation" {
-    provider = azurerm    
   command = plan
   variables {
     linux_web_app_name      = var.linux_web_app_name
@@ -33,7 +31,6 @@ run "input_validation" {
 }
 
 run "setup_resouce_group" {
-    provider = azurerm    
   command = apply
   variables {
     resource_group_name     = "rg-integrationtest"
