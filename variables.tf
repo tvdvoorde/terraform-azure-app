@@ -16,9 +16,6 @@ variable "service_plan_name" {
   }  
 }
 
-
-}
-
 variable "linux_web_app_name" {
   type = string
 }
