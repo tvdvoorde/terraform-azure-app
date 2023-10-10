@@ -45,7 +45,7 @@ run "setup_resouce_group" {
 }
 
 run "integration_test" {
-    provider = azurerm    
+    
   command = apply
   variables {
     resource_group_name     = run.setup_resouce_group.resource_group_name
@@ -57,7 +57,6 @@ run "integration_test" {
 
 
 run "end_to_end_test1" {
-    provider = azurerm    
   command = apply
   variables {
     site = run.integration_test.default_hostname
