@@ -50,6 +50,11 @@ run "integration_test" {
     service_plan_name       = "plan-integrationtest"
     linux_web_app_name      = "app-integrationtest-38742738"
   }
+
+  assert {
+    condition = azurerm_linux_web_app.app.https_only == true
+    error_message = "The web app is not configured to only use HTTPS"
+  }
 }
 
 
