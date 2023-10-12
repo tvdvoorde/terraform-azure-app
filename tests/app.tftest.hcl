@@ -2,7 +2,7 @@
 
 variables {
   linux_web_app_name      = "app-xxxx"
-  service_plan_name       = "plan-xxxx"
+  service_plan_name       = "planx-xxxx"
   resource_group_name     = "xxxx"
   resource_group_location = "westeurope"
 }
