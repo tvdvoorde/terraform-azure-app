@@ -18,13 +18,3 @@ module "app" {
   resource_group_name     = azurerm_resource_group.test.name
   resource_group_location = azurerm_resource_group.test.location
 }
-
-# check "response" {
-#   data "http" "site" {
-#     url      = "https://${module.app.default_hostname}"
-#   }
-#   assert {
-#     condition     = data.http.site.status_code == 200
-#     error_message = "Site is returning ${data.http.site.status_code} instead of 200"
-#   }
-# }
