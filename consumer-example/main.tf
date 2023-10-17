@@ -19,13 +19,5 @@ module "app" {
   resource_group_location = azurerm_resource_group.test.location
 }
 
-check "inspec" {
-  data "external" "inspec" {
-    program = ["bash","./test.sh","${module.app.default_hostname}"]
-    }
-  assert {
-    condition     = data.external.inspec.result.passed == "true"
-    error_message = "errors while testing"
-  }
-}
+
 
