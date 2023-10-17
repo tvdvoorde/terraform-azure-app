@@ -57,8 +57,8 @@ run "integration_test" {
 }
 
 
-run "end_to_end_test" {
-  command = apply
+run "end_to_end_test1" {
+  command = plan
   variables {
     site = run.integration_test.default_hostname
   }
@@ -67,8 +67,28 @@ run "end_to_end_test" {
   }
 }
 
+run "end_to_end_test2" {
+  # if you run this check on apply - it will attempt to run the module on destroy, and since it has a data, (http requires a 200 response) - it will fail
+  # if you run it like end_to_end_test1, it is a check that only runs on apply
+  command = plan
+  variables {
+    site = run.integration_test.default_hostname
+  }
+  module {
+    source = "./tests/httpget"
+  }
+  assert {
+    condition = data.http.site.status_code == 200
+    error_message = "The web app is not responding with a 200 status code"
+  }
+  assert {
+    condition     = strcontains(data.http.site.response_body,"Microsoft Azure App Service") == true
+    error_message = "Site does not contain \"Microsoft Azure App Service\""
+  }
+}
+
 run "inspec" {
-  command = apply
+  command = plan
   variables {
     site = run.integration_test.default_hostname
   }
