@@ -1,5 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
+
 name: test
 
 on:
@@ -30,3 +31,9 @@ jobs:
       - name: terraform test
         run: |
           terraform test 
+      - uses: actions/upload-artifact@v3
+        name: 'upload test results'
+        if: always()
+        with:
+          name: test-result-${{ github.run_number }}
+          path: test.html          
