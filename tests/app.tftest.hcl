@@ -2,14 +2,15 @@
 
 variables {
   linux_web_app_name      = "app-xxxx"
-  service_plan_name       = "planx-xxxx"
+  service_plan_name       = "plan-xxxx"
   resource_group_name     = "xxxx"
   resource_group_location = "westeurope"
+  use_oidc                = false
 }
 
 provider "azurerm" {
   features {}
-  use_oidc        = true
+  use_oidc        = var.use_oidc
 }
 
 run "unit_tests" {
