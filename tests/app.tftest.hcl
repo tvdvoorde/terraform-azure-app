@@ -24,10 +24,10 @@ run "unit_tests" {
 run "input_validation" {
   command = plan
   variables {
-    linux_web_app_name      = var.linux_web_app_name
+#    linux_web_app_name      = var.linux_web_app_name
     service_plan_name       = "incorrectname"
-    resource_group_name     = var.resource_group_name
-    resource_group_location = var.resource_group_location
+#    resource_group_name     = var.resource_group_name
+#    resource_group_location = var.resource_group_location
   }
   expect_failures = [var.service_plan_name]
 }
