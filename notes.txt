@@ -8,3 +8,8 @@
 #     error_message = "Site is returning ${data.http.site.status_code} instead of 200"
 #   }
 # }
+
+
+inspec exec --chef-license=accept-silent --input=URL=app-integrationtest-38742738.azurewebsites.net  --reporter cli html:test.html -- /test/inspec/profiles/access
+
+

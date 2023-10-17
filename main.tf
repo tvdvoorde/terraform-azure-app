@@ -3,7 +3,7 @@ resource "azurerm_service_plan" "app" {
   resource_group_name = var.resource_group_name
   location            = var.resource_group_location
   os_type             = "Linux"
-  sku_name            = "P1v2"
+  sku_name            = "S1"
 }
 
 resource "azurerm_linux_web_app" "app" {
@@ -13,4 +13,17 @@ resource "azurerm_linux_web_app" "app" {
   service_plan_id     = azurerm_service_plan.app.id
   https_only          = true
   site_config {}
+
+  lifecycle {
+
+      precondition {
+      condition     = azurerm_service_plan.app.os_type == "Linux"
+      error_message = "Must be Linux"
+      }
+      postcondition {
+      condition     = self.https_only == true
+      error_message = "Must also be HTTP"
+    }
+  }
+
 }

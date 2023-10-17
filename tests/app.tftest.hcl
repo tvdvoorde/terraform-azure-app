@@ -24,10 +24,7 @@ run "unit_tests" {
 run "input_validation" {
   command = plan
   variables {
-#    linux_web_app_name      = var.linux_web_app_name
     service_plan_name       = "incorrectname"
-#    resource_group_name     = var.resource_group_name
-#    resource_group_location = var.resource_group_location
   }
   expect_failures = [var.service_plan_name]
 }
@@ -60,12 +57,22 @@ run "integration_test" {
 }
 
 
-run "end_to_end_test1" {
+run "end_to_end_test" {
   command = apply
   variables {
     site = run.integration_test.default_hostname
   }
   module {
     source = "./tests/check"
+  }
+}
+
+run "inspec" {
+  command = apply
+  variables {
+    site = run.integration_test.default_hostname
+  }
+  module {
+    source = "./tests/inspec"
   }
 }

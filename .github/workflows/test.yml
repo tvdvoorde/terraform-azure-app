@@ -20,6 +20,13 @@ jobs:
       - name: terraform init
         run: |
           terraform init
+      - name: 'download inspec'
+        run: |
+          wget -q https://packages.chef.io/files/stable/inspec/5.22.3/ubuntu/20.04/inspec_5.22.3-1_amd64.deb
+          echo 78395b991690260dd128357bd034719012066f84bea1faef2b8d1297cc8d969a inspec_5.22.3-1_amd64.deb|sha256sum -c
+      - name: 'install inspec'
+        run: |
+          sudo dpkg -i inspec_5.22.3-1_amd64.deb
       - name: terraform test
         run: |
           terraform test 
