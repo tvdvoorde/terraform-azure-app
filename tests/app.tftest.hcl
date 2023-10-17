@@ -8,9 +8,9 @@ variables {
   use_oidc                = false
 }
 
+
 provider "azurerm" {
   features {}
-  use_oidc        = var.use_oidc
 }
 
 run "unit_tests" {
