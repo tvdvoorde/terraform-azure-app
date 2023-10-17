@@ -1,3 +1,4 @@
+sleep 60
 inspec exec --chef-license=accept-silent --input=HOST=$1 --reporter html:test.html -- $2/profiles/access 
 if [ $? -eq 0 ] 
 then
