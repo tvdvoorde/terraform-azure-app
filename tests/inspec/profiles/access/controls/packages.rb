@@ -1,5 +1,5 @@
 describe http('https://'+input('HOST'), ssl_verify: true) do
-     its('status') { should cmp 999 }
+     its('status') { should cmp 200 }
   end
 
 describe host(input('HOST'), port: 443, protocol: 'tcp') do
