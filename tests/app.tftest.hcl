@@ -10,8 +10,11 @@ variables {
 
 
 provider "azurerm" {
-  use_oidc = true
   features {}
+  subscription_id = "ea757669-674b-44c1-bf87-bd0fd0880294"
+  client_id       = "e3fc25fa-e7f4-475c-b02c-8305577ed383"
+  use_oidc        = true
+  tenant_id       = "e2a4b012-36ad-45f2-8c5c-169f06c2f970"
 }
 
 run "unit_tests" {
