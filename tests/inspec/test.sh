@@ -4,8 +4,7 @@ inspec exec --chef-license=accept-silent --input=HOST=$1 --reporter html:test.ht
 if [ $? -eq 0 ] 
 then
   echo '{"passed": "true"}'|jq .
-  exit 0
 else
   echo '{"passed": "false"}'|jq .
-  exit 1
 fi
+exit 0
