@@ -4,7 +4,7 @@ variable "site" {}
 
 check "inspec" {
   data "external" "inspec" {
-    program = ["bash","${path.module}/test.sh","${var.site}"]
+    program = ["bash","${path.module}/test.sh","${var.site}","${path.module}"]
     }
   assert {
     condition     = data.external.inspec.result.passed == "true"

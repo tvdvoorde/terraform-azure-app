@@ -1,4 +1,4 @@
-inspec exec --chef-license=accept-silent --input=HOST=$* --reporter html:test.html -- ./tests/profiles/access 
+inspec exec --chef-license=accept-silent --input=HOST=$1 --reporter html:test.html -- $2/profiles/access 
 if [ $? -eq 0 ] 
 then
   echo '{"passed": "true"}'|jq .
