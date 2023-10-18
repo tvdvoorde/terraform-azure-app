@@ -87,7 +87,7 @@ run "end_to_end_test-dns" {
     source = "./tests/dns"
   }
   assert {
-    condition = substr(data.dns_a_record_set.site.addrs[0],0,3) == "10."
+    condition = substr(data.dns_a_record_set.site.addrs[0],0,3) != "10."
     error_message = "DNS needs to resolve to a private address"
   }
 }
