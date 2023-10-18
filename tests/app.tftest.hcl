@@ -57,7 +57,7 @@ run "integration_test" {
 }
 
 
-run "end_to_end_test1" {
+run "end_to_end_test-httpget-v1" {
   command = plan
   variables {
     site = run.integration_test.default_hostname
@@ -67,7 +67,7 @@ run "end_to_end_test1" {
   }
 }
 
-run "end_to_end_test2" {
+run "end_to_end_test-httpget-v2" {
   # if you run this check on apply - it will attempt to run the module on destroy, and since it has a data, (http requires a 200 response) - it will fail
   # if you run it like end_to_end_test1, it is a check that only runs on apply
   command = plan
@@ -87,7 +87,7 @@ run "end_to_end_test2" {
   }
 }
 
-run "inspec" {
+run "end_to_end_test-inspec" {
   command = plan
   variables {
     site = run.integration_test.default_hostname
