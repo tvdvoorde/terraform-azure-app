@@ -25,7 +25,7 @@ jobs:
       - name: 'install inspec'
         run: |
           sudo dpkg -i inspec_5.22.3-1_amd64.deb
-      - name: terraform test -filter app.tftest.hcl
+      - name: terraform test -filter tests/app.tftest.hcl
         run: |
           terraform test 
       - uses: actions/upload-artifact@v3
