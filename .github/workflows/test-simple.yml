@@ -20,5 +20,5 @@ jobs:
           terraform init
       - name: terraform test
         run: |
-          terraform test -filter=app-simple.tftest.hcl
+          terraform test -filter=tests/app-simple.tftest.hcl
        
