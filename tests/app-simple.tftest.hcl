@@ -32,7 +32,7 @@ run "input_validation" {
 run "setup_resouce_group" {
   command = apply
   variables {
-    resource_group_name     = "rg-integrationtestfull"
+    resource_group_name     = "rg-integrationtestsimple"
     resource_group_location = "westeurope"
   }
   module {
@@ -57,16 +57,6 @@ run "integration_test" {
 }
 
 
-run "end_to_end_test1" {
-  command = plan
-  variables {
-    site = run.integration_test.default_hostname
-  }
-  module {
-    source = "./tests/check"
-  }
-}
-
 run "end_to_end_test2" {
   # if you run this check on apply - it will attempt to run the module on destroy, and since it has a data, (http requires a 200 response) - it will fail
   # if you run it like end_to_end_test1, it is a check that only runs on apply
@@ -84,15 +74,5 @@ run "end_to_end_test2" {
   assert {
     condition     = strcontains(data.http.site.response_body,"Microsoft Azure App Service") == true
     error_message = "Site does not contain \"Microsoft Azure App Service\""
-  }
-}
-
-run "inspec" {
-  command = plan
-  variables {
-    site = run.integration_test.default_hostname
-  }
-  module {
-    source = "./tests/inspec"
   }
 }
