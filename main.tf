@@ -16,11 +16,11 @@ resource "azurerm_linux_web_app" "app" {
 
   lifecycle {
 
-      precondition {
+    precondition {
       condition     = azurerm_service_plan.app.os_type == "Linux"
       error_message = "Must be Linux"
-      }
-      postcondition {
+    }
+    postcondition {
       condition     = self.https_only == true
       error_message = "Must also be HTTP"
     }
